@@ -1,6 +1,4 @@
 from django.db import models
-
-# Create your models here.
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
     PermissionsMixin
 
@@ -25,12 +23,36 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-        """Custom user model that supports using email instead of username"""
-        email = models.EmailField(max_length=255, unique=True)
-        name = models.CharField(max_length=255)
-        is_active = models.BooleanField(default=True)
-        is_staff = models.BooleanField(default=False)
+    """Custom user model that supports using email instead of username"""
+    email = models.EmailField(max_length=255, unique=True)
+    name = models.CharField(max_length=255)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
 
-        objects = UserManager()
+    objects = UserManager()
 
-        USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'email'
+
+#
+# class Role(AbstractBaseUser, PermissionsMixin):
+#     """Custom user model that supports using email instead of username"""
+#     email = models.EmailField(max_length=255, unique=True)
+#     name = models.CharField(max_length=255)
+#     is_active = models.BooleanField(default=True)
+#     is_staff = models.BooleanField(default=False)
+#
+#     objects = UserManager()
+#
+#     USERNAME_FIELD = 'email'
+#
+#
+# class Permissions(AbstractBaseUser, PermissionsMixin):
+#     """Custom user model that supports using email instead of username"""
+#     email = models.EmailField(max_length=255, unique=True)
+#     name = models.CharField(max_length=255)
+#     is_active = models.BooleanField(default=True)
+#     is_staff = models.BooleanField(default=False)
+#
+#     objects = UserManager()
+#
+#     USERNAME_FIELD = 'email'
